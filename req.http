@@ -1,0 +1,8 @@
+POST http://localhost:8080/daysales
+Content-Type: application/json
+
+{
+  "data": "2021/07/24",
+  "revenue": 5000,
+  "sales_person": "Anna"
+}
