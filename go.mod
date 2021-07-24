@@ -1,4 +1,4 @@
-module eco4go
+module test
 
 go 1.16
 

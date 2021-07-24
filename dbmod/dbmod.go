@@ -13,7 +13,7 @@ type Sales struct {
 	ID                           int     `json:"id,omitempty"`
 	Data                         string  `json:"data"`
 	Revenue                      float64 `json:"revenue"`
-	SalesPerson 				 string  `json:"sales_person"`
+	SalesPerson 		      string  `json:"sales_person"`
 }
 
 type Auth struct {

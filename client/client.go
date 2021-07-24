@@ -13,7 +13,7 @@ type Sales struct {
 	ID                           int     `json:"id,omitempty"`
 	Data                         string  `json:"data"`
 	Revenue                      float64 `json:"revenue"`
-	SalesPerson 				 string  `json:"sales_person"`
+	SalesPerson 		      string  `json:"sales_person"`
 }
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 	if err != nil {
 		log.Print(err)
 	}
-	path := "daysales"
+	path := "add-sales"
 	byf := bytes.NewBuffer(b)
 
 	req, err := http.NewRequest("POST", "http://127.0.0.1:8080/"+path, byf)
