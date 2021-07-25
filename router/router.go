@@ -1,15 +1,13 @@
 package router
 
 import (
-	"eco4go/handlers"
-	"eco4go/middlewares"
-	"eco4go/templates"
-	
+	"github.com/labstack/echo/v4"
 	"log"
 	"os"
 	"os/signal"
-	
-	"github.com/labstack/echo/v4"
+	"eco4go/handlers"
+	"eco4go/middlewares"
+	"eco4go/templates"
 )
 
 const address = "127.0.0.1:8080"
@@ -17,11 +15,12 @@ const address = "127.0.0.1:8080"
 func newRoute() *echo.Echo {
 	e := echo.New()
 	middlewares.SetGeneralMiddlewares(e)
-
-	tempFiles := []string{"templates/gohtml/month.gohtml"}
+	//month.gohtml
+	tempFiles := []string{"templates/gohtml/index.gohtml"}
 	templates.SetupTamplateConfig(tempFiles, e)
+	e.Static("/static", "static/css")
 
-	e.GET("/month", handlers.ViewMonthComplection)
+	e.GET("/month", handlers.ViewMonthCompletion)
 	e.GET("/all-json", handlers.AllDataJSON)
 	e.POST("/add-sales", handlers.AddDaySales)
 

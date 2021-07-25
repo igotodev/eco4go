@@ -10,18 +10,18 @@ import (
 )
 
 type Sales struct {
-	ID                           int     `json:"id,omitempty"`
-	Data                         string  `json:"data"`
-	Revenue                      float64 `json:"revenue"`
-	SalesPerson 		      string  `json:"sales_person"`
+	ID          int     `json:"id,omitempty"`
+	Data        string  `json:"data"`
+	Revenue     float64 `json:"revenue"`
+	SalesPerson string  `json:"sales_person"`
 }
 
 type Auth struct {
-	Login string
-	Password string
-	Cookie string
+	Login            string
+	Password         string
+	Cookie           string
 	CreationUserTime string
-	Invite bool
+	Invite           bool
 }
 
 var myDB *sql.DB
@@ -33,13 +33,12 @@ var (
 	wg sync.WaitGroup
 )
 
-
 func (sales *Sales) InsertDailySales() error {
 	//mu.Lock()
 	//defer mu.Unlock()
 	dataNow := time.Now().Format("2006-01-02")
 
-	_, err := myDB.Exec("INSERT INTO `monthly_sales` (`data`, `revenue`, `sales_person`) " +
+	_, err := myDB.Exec("INSERT INTO `monthly_sales` (`data`, `revenue`, `sales_person`) "+
 		"VALUES (?, ?, ?);", dataNow, sales.Revenue, sales.SalesPerson)
 	if err != nil {
 		return err
@@ -166,4 +165,3 @@ func OpenDB() {
 func CloseDB() {
 	myDB.Close()
 }
-
